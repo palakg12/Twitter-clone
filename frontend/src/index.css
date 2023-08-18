@@ -48,7 +48,8 @@ h3 {
   justify-content: space-between;
   align-items: center;
   padding: 10px 0;
-
+  border-left: 1px solid #e6e6e6;
+  border-right: 1px solid #e6e6e6;
   border-bottom: 1px solid #e6e6e6;
   margin-bottom: 0px;
 }
@@ -61,6 +62,7 @@ h3 {
 
 .header ul li {
   margin-left: 20px;
+  margin-right: 20px;
 }
 
 .header ul li a {
@@ -91,13 +93,15 @@ h3 {
 
 .goals {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 10px;
+  /* grid-template-columns: repeat(2, 1fr); */
+  gap: 1px;
+  border-top: 1px solid #e6e6e6;
 }
 
 .goal {
-  background-color: #f4f4f4;
-  margin: 10px 0;
+  
+  /* background-color: #f4f4f4; */
+  margin:  0;
   padding: 20px 0 10px;
   position: relative;
 }
@@ -113,27 +117,72 @@ h3 {
 .logo{
   padding-left: 100px;
 }
+.form{
+  width: 100%;
+display: inline;
 
+}
 .form,
 .content {
-  width: 40%;
+  width: 100%;
   margin: 0 auto;
+  
 }
 
 .form-group {
   margin-bottom: 10px;
+  /* /* display: flex;
+  float: left; */
 }
 
 .form-group input,
 .form-group textarea,
 .form-group select {
-  width: 100%;
+  width: 800px;
+  height: 70px;
+  margin-left: 0;
+  /* margin-bottom: 40px; */
   padding: 10px;
   border: 1px solid #e6e6e6;
+  /* background-color: #f4f4f4; */
   border-radius: 5px;
-  margin-bottom: 10px;
+  margin-bottom: 0px;
   font-family: inherit;
 }
+.form-field input{
+  width: 800px;
+  height: 70px;
+  margin-left: 0;
+  margin-bottom: 40px;
+  padding: 10px;
+  border: 1px solid #e6e6e6;
+  background-color: #f4f4f4;
+  border-radius: 5px;
+  margin-bottom: 0px;
+  font-family: inherit;
+}
+.field-btn{
+  margin-left: 680px;
+  padding: 4px;
+  width: 12%;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  padding: 10px 20px;
+  border:rgb(29, 155, 240);
+  border-radius: 20px;
+  background-color:  rgb(29, 155, 240);
+  color: #fff;
+  font-size: 16px;
+  font-weight: 700;
+  cursor: pointer;
+  height: 45px;
+  text-align: center;
+  margin-right: 40px;
+  align-items: center;
+  justify-content: center;
+}
+
+
 
 .form-group label {
   text-align: left;
@@ -154,6 +203,7 @@ h3 {
   text-align: center;
   appearance: button;
   display: flex;
+  margin-right: 40px;
   align-items: center;
   justify-content: center;
 }
@@ -168,8 +218,11 @@ h3 {
 }
 
 .btn-block {
-  width: 100%;
-  margin-bottom: 20px;
+  margin-left: 480px;
+  padding: 4px;
+  width: 20%;
+  margin-top: 10px;
+  margin-bottom: 10px;
 }
 
 .btn:hover {
@@ -219,6 +272,12 @@ h3 {
   .heading p {
     font-size: 1.5rem;
   }
+  .mainPage{
+    width: 100px;
+  }
+.navbar-expand{
+  width: 100px;
+}
 }
 .navbar-expand{
   display: flex;
@@ -228,9 +287,9 @@ h3 {
   border-right: 1px solid #e6e6e6;
   background-color: #ffffff;
   width: 300px;
-  height: 1000px;
+  /* height: 1000px; */
 }
-.post{
+/* .post{
   padding: 10px;
   background-color:  rgb(29, 155, 240);
   margin-left: 50px;
@@ -241,7 +300,7 @@ h3 {
   margin-top: 150px;
   font-size: 20px;
   color: #fff;
-}
+} */
 .navitems{
   padding-top: 80px;
   padding-left: 50px;
@@ -254,22 +313,34 @@ h3 {
   
 }
 .navlist{
+  cursor: pointer;
   display:inline-flex;
   padding: auto;
+  
+  padding: 15px;
   padding-right: 10px;
+}
+.navlist:hover{
+  background-color: #f5f5f5;
+  width: 200px;
+
+  margin-left: 0px;
+  border-radius: 100px;
 }
 .mainPage{
   display: flex;
 }
 .mainpge{
-  display: flex;
   width: 900px;
 }
+.mainPage{
+  border-left: 1px solid #e6e6e6;
+  border-right: 1px solid #e6e6e6;
+}
 .mainhead{
-  text-align: center;
-  padding-top: 18px;
-  width: 440px;
+
+  padding-top: 10px; 
+  width: 900px;
   height: 70px;
-  /* background-color: #000; */
-  border-bottom: 1px solid #e6e6e6;
+  /* border-bottom: 1px solid #e6e6e6; */
 }

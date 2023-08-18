@@ -17,21 +17,23 @@ function GoalForm() {
   return (
     <section className='form'>
       <form onSubmit={onSubmit}>
-        <div className='form-group'>
-          <label htmlFor='text'>Goal</label>
+        <div className='form-field'>
           <input
             type='text'
             name='text'
             id='text'
             value={text}
+            placeholder="What's happening?"
             onChange={(e) => setText(e.target.value)}
           />
-        </div>
-        <div className='form-group'>
-          <button className='btn btn-block' type='submit'>
-            Add Goal
+          <button className='field-btn' type='submit'>
+            Tweet
           </button>
+    
         </div>
+        {/* <div className='form-group'>
+          
+        </div> */}
       </form>
     </section>
   )
