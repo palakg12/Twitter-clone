@@ -1,6 +1,6 @@
 const mongoose = require('mongoose')
 
-const userSchema = mongoose.Schema(
+const UserSchema = mongoose.Schema(
   {
     name: {
       type: String,
@@ -15,10 +15,15 @@ const userSchema = mongoose.Schema(
       type: String,
       required: [true, 'Please add a password'],
     },
+    profileProfile: { type: String },
+    followers: { type: Array, defaultValue: [] },
+    following: { type: Array, defaultValue: [] },
+    description: { type: String },
+    profileProfile: { type: String },
   },
   {
     timestamps: true,
   }
 )
 
-module.exports = mongoose.model('User', userSchema)
+module.exports = mongoose.model('User', UserSchema)

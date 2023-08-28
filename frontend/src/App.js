@@ -1,27 +1,58 @@
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
-import { ToastContainer } from 'react-toastify'
-import 'react-toastify/dist/ReactToastify.css'
-import Header from './components/Header'
-import Dashboard from './pages/Dashboard'
-import Login from './pages/Login'
-import Register from './pages/Register'
+import { createBrowserRouter, RouterProvider, Outlet } from "react-router-dom";
+
+import "./App.css";
+import Home from "./pages/Home";
+import Profile from "./pages/Profile";
+import Explore from "./pages/Explore";
+import Signin from "./pages/Signin";
+import Navbar from "./components/Navbar";
+import Error from "./pages/Error";
+
+const Layout = () => {
+  return (
+    <div className="md:w-8/12 mx-auto">
+      <Navbar />
+      <Outlet></Outlet>
+    </div>
+  );
+};
+
+const router = createBrowserRouter([
+  {
+    path: "/",
+    errorElement: <Error />,
+    element: <Layout />,
+    children: [
+      {
+        path: "/",
+        element: <Home />,
+      },
+      {
+        path: "/profile/:id",
+        element: <Profile />,
+      },
+      {
+        path: "/explore",
+        element: <Explore />,
+      },
+      {
+        path: "/signin",
+        element: <Signin />,
+      },
+      {
+        path: "/signout",
+        element: <Signin />,
+      },
+    ],
+  },
+]);
 
 function App() {
   return (
-    <>
-      <Router>
-        <div className='container'>
-          <Header />
-          <Routes>
-            <Route path='/' element={<Dashboard />} />
-            <Route path='/login' element={<Login />} />
-            <Route path='/register' element={<Register />} />
-          </Routes>
-        </div>
-      </Router>
-      <ToastContainer />
-    </>
-  )
+    <div>
+      <RouterProvider router={router}></RouterProvider>
+    </div>
+  );
 }
 
-export default App
+export default App;
