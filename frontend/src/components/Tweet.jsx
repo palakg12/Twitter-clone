@@ -35,11 +35,17 @@ const Tweet = ({ tweet, setData }) => {
 
   const handleLike = async (e) => {
     e.preventDefault();
-
+ const token=localStorage.getItem("token");
+    console.log("tweet",token);
+    e.preventDefault();
+    const headers = {
+      Authorization: `Bearer ${token}`,
+      "Content-Type": "application/json", // Set the content type as needed
+    };
     try {
       const like = await axios.put(`/tweets/${tweet._id}/like`, {
         id: currentUser._id,
-      });
+      }, {headers});
 
       if (location.includes("profile")) {
         const newData = await api.get(`/tweets/user/all/${id}`);
@@ -86,3 +92,4 @@ const Tweet = ({ tweet, setData }) => {
 };
 
 export default Tweet;
+

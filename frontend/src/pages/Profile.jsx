@@ -4,7 +4,7 @@ import RightSidebar from "../components/RightSideBar";
 import EditProfile from "../components/EditProfile";
 import { useParams } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
-import axios from "axios";
+
 import Tweet from "../components/Tweet";
 import { following } from "../redux/userSlice";
 import api from "../redux/api";
@@ -23,7 +23,7 @@ const Profile = () => {
       try {
         const userTweets = await api.get(`/tweets/user/all/${id}`);
         const userProfile = await api.get(`/users/find/${id}`);
-
+// console.log(userProfile)
         setUserTweets(userTweets.data);
         setUserProfile(userProfile.data);
       } catch (err) {
@@ -35,7 +35,9 @@ const Profile = () => {
   }, [currentUser, id]);
 
   const handleFollow = async () => {
+
     if (!currentUser.following.includes(id)) {
+      
       try {
         const follow = await api.put(`/users/follow/${id}`, {
           id: currentUser._id,

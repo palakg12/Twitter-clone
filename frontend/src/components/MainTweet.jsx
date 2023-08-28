@@ -8,14 +8,20 @@ const MainTweet = () => {
   const [tweetText, setTweetText] = useState("");
   const { currentUser } = useSelector((state) => state.user);
 
-
   const handleSubmit = async (e) => {
+    const token=localStorage.getItem("token");
+    console.log("tweet",token);
     e.preventDefault();
+    const headers = {
+      Authorization: `Bearer ${token}`,
+      "Content-Type": "application/json", // Set the content type as needed
+    };
+
     try {
       const submitTweet = await api.post("/tweets/new", {
         userId: currentUser._id,
         description: tweetText,
-      });
+      }, { headers });
       window.location.reload(false);
     } catch (err) {
       console.log(err);

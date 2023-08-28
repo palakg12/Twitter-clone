@@ -12,12 +12,12 @@ const Signin = () => {
 
   const dispatch = useDispatch();
   const navigate = useNavigate();
-
   const handleLogin = async (e) => {
     e.preventDefault();
     dispatch(loginStart());
     try {
       const res = await api.post("/auth/login", {email, password });
+      window.localStorage.setItem("token" ,res.data.token);
       dispatch(loginSuccess(res.data));
       navigate("/");
     } catch (err) {
@@ -35,15 +35,43 @@ const Signin = () => {
         email,
         password,
       });
-      window.localStorage.setItem("token" ,res.token)
-      // window.localStorage.setItem(key, value);
-      console.log(res.data.token)
       dispatch(loginSuccess(res.data));
       navigate("/");
     } catch (err) {
       dispatch(loginFailed());
-    }
-  };
+      }
+    };
+  // const handleLogin = async (e) => {
+  //   e.preventDefault();
+  //   dispatch(loginStart());
+  //   try {
+  //     const res = await api.post("/auth/login", {email, password });
+  //     dispatch(loginSuccess(res.data));
+  //     navigate("/");
+  //   } catch (err) {
+  //     dispatch(loginFailed());
+  //   }
+  // };
+
+  // const handleSignup = async (e) => {
+  //   e.preventDefault();
+  //   dispatch(loginStart());
+
+  //   try {
+  //     const res = await api.post("/auth/register", {
+  //       name,
+  //       email,
+  //       password,
+  //     });
+  //     window.localStorage.setItem("token" ,res.token)
+  //     // window.localStorage.setItem(key, value);
+  //     console.log(res.data.token)
+  //     dispatch(loginSuccess(res.data));
+  //     navigate("/");
+  //   } catch (err) {
+  //     dispatch(loginFailed());
+  //   }
+  // };
 
   // localStorage.setItem("res.data");
 
