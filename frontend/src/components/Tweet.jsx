@@ -8,6 +8,7 @@ import { useSelector } from "react-redux";
 
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 import FavoriteIcon from "@mui/icons-material/Favorite";
+import { BackendUrl } from "../App";
 
 const Tweet = ({ tweet, setData }) => {
   const { currentUser } = useSelector((state) => state.user);
@@ -22,8 +23,7 @@ const Tweet = ({ tweet, setData }) => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const findUser = await api.get(`/users/find/${tweet.userId}`);
-
+        const findUser = await api.get(`${BackendUrl}/users/find/${tweet.userId}`);
         setUserData(findUser.data);
       } catch (err) {
         console.log("error", err);
@@ -43,18 +43,18 @@ const Tweet = ({ tweet, setData }) => {
       "Content-Type": "application/json", // Set the content type as needed
     };
     try {
-      const like = await axios.put(`/tweets/${tweet._id}/like`, {
+      const like = await axios.put(`${BackendUrl}/tweets/${tweet._id}/like`, {
         id: currentUser._id,
       }, {headers});
 
       if (location.includes("profile")) {
-        const newData = await api.get(`/tweets/user/all/${id}`);
+        const newData = await api.get(`${BackendUrl}/tweets/user/all/${id}`);
         setData(newData.data);
       } else if (location.includes("explore")) {
-        const newData = await api.get(`/tweets/explore`);
+        const newData = await api.get(`${BackendUrl}/tweets/explore`);
         setData(newData.data);
       } else {
-        const newData =await api.get(`/tweets/timeline/${currentUser._id}`);
+        const newData =await api.get(`${BackendUrl}/tweets/timeline/${currentUser._id}`);
         setData(newData.data);
       }
     } catch (err) {

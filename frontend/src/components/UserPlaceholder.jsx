@@ -1,8 +1,7 @@
-import axios from "axios";
-import React, { useState, useEffect } from "react";
+import React, { useEffect } from "react";
 import api from "../redux/api";
 import { useLocation, useParams } from "react-router-dom";
-
+import { BackendUrl } from "../App";
 const UserPlaceholder = ({ setUserData, userData }) => {
   const { id } = useParams();
   const location = useLocation().pathname;
@@ -10,7 +9,7 @@ const UserPlaceholder = ({ setUserData, userData }) => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const userProfile = await api.get(`/users/find/${id}`);
+        const userProfile = await api.get(`${BackendUrl}/users/find/${id}`);
         setUserData(userProfile.data);
       } catch (e) {
         console.log(e);

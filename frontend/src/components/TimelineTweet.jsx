@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import Tweet from "./Tweet";
 import api from "../redux/api";
-
+import { BackendUrl } from "../App";
 const TimelineTweet = () => {
   const [timeLine, setTimeLine] = useState(null);
 
@@ -12,7 +12,7 @@ const TimelineTweet = () => {
     const fetchData = async () => {
       try {
         const timelineTweets = await api.get(
-          `/tweets/timeline/${currentUser._id}`
+          `${BackendUrl}/tweets/timeline/${currentUser._id}`
         );
 
         setTimeLine(timelineTweets.data);

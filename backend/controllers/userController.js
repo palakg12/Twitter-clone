@@ -104,49 +104,49 @@ const getUser = asyncHandler(async (req, res) => {
       res.status(200).json(user)
     })
 
-// const updateUser = asyncHandler(async (req, res) => {
-//   if (req.params.id === req.user.id) {
-//       const updatedUser = await User.findByIdAndUpdate(
-//         req.params.id,
-//         {
-//           $set: req.body,
-//         },
-//         {
-//           new: true,
-//         }
-//       );
-//       res.status(200).json(updatedUser);
-//     } 
-//    else {
-//     throw new Error(createError(403, "You can update only your account"));
-//   }
-// })
 const updateUser = asyncHandler(async (req, res) => {
-    const user = await User.findById(req.params.id)
+  if (req.params.id === req.user.id) {
+      const updatedUser = await User.findByIdAndUpdate(
+        req.params.id,
+        {
+          $set: req.body,
+        },
+        {
+          new: true,
+        }
+      );
+      res.status(200).json(updatedUser);
+    } 
+   else {
+    throw new Error(createError(403, "You can update only your account"));
+  }
+})
+// const updateUser = asyncHandler(async (req, res) => {
+//     const user = await User.findById(req.params.id)
   
-    if (!user) {
-      res.status(400)
-      throw new Error('user not found')
-    }
+//     if (!user) {
+//       res.status(400)
+//       throw new Error('user not found')
+//     }
   
-    // Check for user
-    if (!req.user) {
-      res.status(401)
-      throw new Error('User not found')
-    }
+//     // Check for user
+//     if (!req.user) {
+//       res.status(401)
+//       throw new Error('User not found')
+//     }
   
-    // Make sure the logged in user matches the goal user
-    if (req.params.id !== req.user.id) {
-      res.status(401)
-      throw new Error('User not authorized')
-    }
+//     // Make sure the logged in user matches the goal user
+//     if (req.params.id !== req.user.id) {
+//       res.status(401)
+//       throw new Error('User not authorized')
+//     }
   
-    const updatedUser = await User.findByIdAndUpdate(req.params.id, req.body, {
-      new: true,
-    })
+//     const updatedUser = await User.findByIdAndUpdate(req.params.id, req.body, {
+//       new: true,
+//     })
   
-    res.status(200).json(updatedUser)
-  })
+//     res.status(200).json(updatedUser)
+//   })
   
 const deleteUser = asyncHandler(async (req, res) => {
   if (req.params.id === req.user.id) {

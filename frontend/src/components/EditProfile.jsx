@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import api from "../redux/api";
 import { changeProfile, logout } from "../redux/userSlice";
 import { useNavigate } from "react-router-dom";
-
+import { BackendUrl } from "../App";
 import {
   getStorage,
   ref,
@@ -53,7 +53,7 @@ const EditProfile = ({ setOpen }) => {
         // Upload completed successfully, now we can get the download URL
         getDownloadURL(uploadTask.snapshot.ref).then(async (downloadURL) => {
           try {
-            const updateProfile = await api.put(`/users/${currentUser._id}`, {
+            const updateProfile = await api.put(`${BackendUrl}/users/${currentUser._id}`, {
               profilePicture: downloadURL,
             });
 
@@ -69,8 +69,16 @@ const EditProfile = ({ setOpen }) => {
     );
   };
 
-  const handleDelete = async () => {
-    const deleteProfile = await api.delete(`/users/${currentUser._id}`);
+  const handleDelete = async (e) => {
+    const token=localStorage.getItem("token");
+    console.log("tweet",token);
+    e.preventDefault();
+    const headers = {
+      Authorization: `Bearer ${token}`,
+      "Content-Type": "application/json", // Set the content type as needed
+    };
+    const deleteProfile = await api.delete(`${BackendUrl}/users/${currentUser._id}`
+    ,{headers});
     dispatch(logout());
     navigate("/signin");
   };

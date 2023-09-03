@@ -4,7 +4,7 @@ import RightSidebar from "../components/RightSideBar";
 import EditProfile from "../components/EditProfile";
 import { useParams } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
-
+import { BackendUrl } from "../App";
 import Tweet from "../components/Tweet";
 import { following } from "../redux/userSlice";
 import api from "../redux/api";
@@ -21,8 +21,8 @@ const Profile = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const userTweets = await api.get(`/tweets/user/all/${id}`);
-        const userProfile = await api.get(`/users/find/${id}`);
+        const userTweets = await api.get(`${BackendUrl}/tweets/user/all/${id}`);
+        const userProfile = await api.get(`${BackendUrl}/users/find/${id}`);
 // console.log(userProfile)
         setUserTweets(userTweets.data);
         setUserProfile(userProfile.data);
@@ -34,21 +34,27 @@ const Profile = () => {
     fetchData();
   }, [currentUser, id]);
 
-  const handleFollow = async () => {
-
+  const handleFollow = async (e) => {
+    const token=localStorage.getItem("token");
+    console.log("tweet",token);
+    e.preventDefault();
+    const headers = {
+      Authorization: `Bearer ${token}`,
+      "Content-Type": "application/json", // Set the content type as needed
+    };
     if (!currentUser.following.includes(id)) {
       
       try {
-        const follow = await api.put(`/users/follow/${id}`, {
+        const follow = await api.put(`${BackendUrl}/users/follow/${id}`, {
           id: currentUser._id,
-        });
+        },{headers});
         dispatch(following(id));
       } catch (err) {
         console.log("error", err);
       }
     } else {
       try {
-        const unfollow = await api.put(`/users/unfollow/${id}`, {
+        const unfollow = await api.put(`${BackendUrl}/users/unfollow/${id}`, {
           id: currentUser._id,
         });
 
