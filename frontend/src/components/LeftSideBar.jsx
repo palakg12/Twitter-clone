@@ -41,8 +41,8 @@ const LeftSidebar = () => {
       </div>
       <div className="flex justify-between">
         <div>
-          <p class="text-l text-base/8">{currentUser.name}</p>
-          <p class="text-xl ">@{currentUser.name}</p>
+          <p className="text-l text-base/8">{currentUser.name}</p>
+          <p className="text-xl ">@{currentUser.name}</p>
         </div>
         <div>
           <Link to="signin">

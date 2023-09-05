@@ -56,7 +56,7 @@ const Profile = () => {
       try {
         const unfollow = await api.put(`${BackendUrl}/users/unfollow/${id}`, {
           id: currentUser._id,
-        });
+        },{headers});
 
         dispatch(following(id));
       } catch (err) {

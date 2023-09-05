@@ -202,7 +202,7 @@ const followUser = asyncHandler(async (req, res)=>{
     }
     res.status(200).json("following the user");
   })
-
+    
 const unFollowUser = asyncHandler(async (req, res) => {
     //goal
     const user = await User.findById(req.params.id);

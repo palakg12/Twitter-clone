@@ -36,7 +36,7 @@ const Tweet = ({ tweet, setData }) => {
   const handleLike = async (e) => {
     e.preventDefault();
  const token=localStorage.getItem("token");
-    console.log("tweet",token);
+    // console.log("tweet",token);
     e.preventDefault();
     const headers = {
       Authorization: `Bearer ${token}`,
