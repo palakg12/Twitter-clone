@@ -42,8 +42,8 @@ const Profile = () => {
       Authorization: `Bearer ${token}`,
       "Content-Type": "application/json", // Set the content type as needed
     };
+
     if (!currentUser.following.includes(id)) {
-      
       try {
         const follow = await api.put(`${BackendUrl}/users/follow/${id}`, {
           id: currentUser._id,
@@ -57,18 +57,17 @@ const Profile = () => {
         const unfollow = await api.put(`${BackendUrl}/users/unfollow/${id}`, {
           id: currentUser._id,
         },{headers});
-
         dispatch(following(id));
       } catch (err) {
         console.log("error", err);
       }
     }
   };
-
+  
   return (
     <>
-      <div className="grid grid-cols-1 md:grid-cols-4">
-        <div className="px-6">
+      <div className="bg-custom-color text-white grid grid-cols-1 md:grid-cols-4">
+        <div className="px-6 py-4">
           <LeftSidebar />
         </div>
         <div className="col-span-2 border-x-2 border-t-slate-800 px-6">
@@ -80,21 +79,21 @@ const Profile = () => {
             />
             {currentUser._id === id ? (
               <button
-                className="px-4 -y-2 bg-blue-500 rounded-full text-white"
+                className="px-4 -y-2 bg-purple-500 rounded-full text-white"
                 onClick={() => setOpen(true)}
               >
                 Edit Profile
               </button>
             ) : currentUser.following.includes(id) ? (
               <button
-                className="px-4 -y-2 bg-blue-500 rounded-full text-white"
+                className="px-4 -y-2 bg-purple-500 rounded-full text-white"
                 onClick={handleFollow}
               >
                 Following
               </button>
             ) : (
               <button
-                className="px-4 -y-2 bg-blue-500 rounded-full text-white"
+                className="px-4 -y-2 bg-purple-500 rounded-full text-white"
                 onClick={handleFollow}
               >
                 Follow

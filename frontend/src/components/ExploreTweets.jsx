@@ -19,7 +19,7 @@ const ExploreTweets = () => {
     fetchData();
   }, [currentUser._id]);
   return (
-    <div className="mt-6">
+    <div className="bg-custom-color mt-6">
       {explore &&
         explore.map((tweet) => {
           return (

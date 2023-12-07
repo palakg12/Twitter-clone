@@ -76,58 +76,60 @@ const Signin = () => {
   // localStorage.setItem("res.data");
 
   return (
-    <form className="bg-gray-200 flex flex-col py-12 px-8 rounded-lg w-8/12 md:w-6/12 mx-auto gap-10">
-      <h2 className="text-3xl font-bold text-center">Sign in to Twitter</h2>
+    <form className="bg-custom-color text-white  flex flex-col py-4 px-8 h-screen flex justify-center items-center   ">
+    <form className="bg-white color: white text-white  flex flex-col py-4 px-12 rounded-lg w-8/12 md:w-6/12 mx-auto gap-8 py-1 px-10  bg-white bg-opacity-30 rounded-lg shadow-lg backdrop-blur-xl backdrop-filter">
+      <h2 className="text-3xl font-bold text-center mt-2">Sign in to Twitter</h2>
 
       <input
         onChange={(e) => setEmail(e.target.value)}
         type="text"
         placeholder="Enter your email"
-        className="text-xl py-2 rounded-full px-4"
+        className="mt-0 px-4 py-2 bg-custom-black border shadow-sm border-none placeholder-slate-400 focus:outline-none focus:border-purple-800 focus:ring-purple-800 block w-full rounded-lg sm:text-xl focus:ring-2"
       />
       <input
         onChange={(e) => setPassword(e.target.value)}
         type="password"
-        placeholder="password"
-        className="text-xl py-2 rounded-full px-4"
+        placeholder="Enter your password"
+        className="mt-1 px-4 py-2 bg-custom-black border shadow-sm border-none placeholder-slate-400 focus:outline-none focus:border-purple-800 focus:ring-purple-800 block w-full rounded-lg sm:text-xl focus:ring-2"
       />
 
       <button
-        className="text-xl py-2 rounded-full px-4 bg-blue-500 text-white"
+        className="text-xl py-2 rounded-lg px-4 bg-gradient-to-r from-purple-700  to-pink-700 text-white"
         onClick={handleLogin}
       >
         Sign in
       </button>
 
-      <p className="text-center text-xl">Don't have an account?</p>
+      <p className="text-center text-l">Don't have an account?</p>
 
       <input
         onChange={(e) => setName(e.target.value)}
         type="text"
         placeholder="Enter your name"
-        className="text-xl py-2 rounded-full px-4"
+        className="mt-0 px-4 py-2 bg-custom-black border shadow-sm border-none placeholder-slate-400 focus:outline-none focus:border-purple-800 focus:ring-purple-800 block w-full rounded-lg sm:text-xl focus:ring-2"
       />
       <input
         onChange={(e) => setEmail(e.target.value)}
         type="email"
-        placeholder="email"
+        placeholder="Enter your email"
         required
-        className="text-xl py-2 rounded-full px-4"
+        className="mt-2 px-4 py-2 bg-custom-black border shadow-sm border-none placeholder-slate-400 focus:outline-none focus:border-purple-800 focus:ring-purple-800 block w-full rounded-lg sm:text-xl focus:ring-2"
       />
       <input
         onChange={(e) => setPassword(e.target.value)}
         type="password"
-        placeholder="password"
-        className="text-xl py-2 rounded-full px-4"
+        placeholder="Enter your password"
+        className="mt-2 px-4 py-2 bg-custom-black border shadow-sm border-none placeholder-slate-400 focus:outline-none focus:border-purple-800 focus:ring-purple-800 block w-full rounded-lg sm:text-xl focus:ring-2"
       />
 
       <button
         onClick={handleSignup}
-        className="text-xl py-2 rounded-full px-4 bg-blue-500 text-white"
+        className="text-xl py-2 rounded-lg px-4 bg-gradient-to-r from-purple-700  to-pink-700 text-white"
         type="submit"
       >
         Sign up
       </button>
+      </form>
     </form>
   );
 };

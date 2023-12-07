@@ -11,7 +11,7 @@ export const BackendUrl ="http://localhost:5000/api";
 
 const Layout = () => {
   return (
-    <div className="md:w-8/12 mx-auto">
+    <div className="h-14 ">
       <Navbar />
       <Outlet></Outlet>
     </div>

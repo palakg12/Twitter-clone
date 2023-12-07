@@ -48,8 +48,8 @@ h3 {
   justify-content: space-between;
   align-items: center;
   padding: 10px 0;
-  border-left: 1px solid #e6e6e6;
-  border-right: 1px solid #e6e6e6;
+  border-left: 1px solid purple;
+  border-right: 1px solid purple;
   border-bottom: 1px solid #e6e6e6;
   margin-bottom: 0px;
 }
@@ -71,7 +71,7 @@ h3 {
 }
 
 .header ul li a:hover {
-  color: #777;
+  color:purple;
 }
 
 .header ul li a svg {
@@ -95,7 +95,7 @@ h3 {
   display: grid;
   /* grid-template-columns: repeat(2, 1fr); */
   gap: 1px;
-  border-top: 1px solid #e6e6e6;
+  border-top: 1px solid purple;
 }
 
 .goal {

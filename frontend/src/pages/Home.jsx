@@ -53,7 +53,8 @@ const Home = () => {
       {!currentUser ? (
         <Signin />
       ) : (
-        <div className="grid grid-cols-1 md:grid-cols-4">
+        // <div className="w-full h-full bg-white">
+        <div className="bg-custom-color text-white grid grid-cols-1 md:grid-cols-4">
           <div className="px-6">
             <LeftSidebar />
           </div>
@@ -64,6 +65,7 @@ const Home = () => {
             <RightSidebar />
           </div>
         </div>
+        // </div>
       )}
     </>
   );

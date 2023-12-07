@@ -87,8 +87,131 @@ const generateToken = (id) => {
   })
 }
 
+const forgotPassword = async (req, res, next) => {
+  try {
+    const { email } = req.body;
+    if (!email) {
+      return next(new ErrorHandler(400, "Email Required"));
+    }
+
+    if (!validatemail(email)) {
+      return next(new ErrorHandler(400, "Incorrect email format provided"));
+    }
+
+    const isUser = await User.findOne({
+      email: email.toLowerCase(),
+    });
+
+    if (!isUser) {
+      return next(new ErrorHandler(400, "User by this email does not exist"));
+    }
+    // console.log(isUser);
+    const OTPtoMail = otpGenerator.generate(6, {
+      upperCaseAlphabets: false,
+      lowerCaseAlphabets: false,
+      specialChars: false,
+    });
+
+    // console.log(OTPtoMail);
+
+    mailer.sendEmail(email, OTPtoMail);
+
+    const findOtp = await Otp.findOne({ email });
+
+    // console.log(findOtp, "find otp");
+    if (findOtp) {
+      let date = new Date();
+      date = date.getTime() / 1000;
+      // console.log(date, "date");
+      let otpDate = new Date(findOtp.updatedAt);
+      otpDate = otpDate.getTime() / 1000;
+      // console.log(otpDate, "otp date");
+      // console.log(date, otpDate);
+      if (date < otpDate + 10) {
+        return next(new ErrorHandler(400, "Wait for some time resend otp"));
+      }
+    }
+
+    if (findOtp) {
+      findOtp.otp = OTPtoMail;
+      await findOtp.save();
+    } else {
+      Otp.create({
+        email: email.toLowerCase(),
+        otp: OTPtoMail,
+      });
+    }
+
+    return res.status(200).json({
+      success: true,
+      msg: `OTP sent on Email ${email}`,
+    });
+  } catch (error) {
+    next(error);
+  }
+};
+
+const OtpVerify = async (req, res, next) => {
+  try {
+    const { email, otp } = req.body;
+    if (!email) {
+      return next(new ErrorHandler(400, "Email Required for otp verification"));
+    }
+
+    if (!otp) {
+      return next(new ErrorHandler(400, "OTP Required for verification"));
+    }
+
+    if (!validatemail(email)) {
+      return next(new ErrorHandler(400, "Incorrect Email format."));
+    }
+
+    const findOtp = await Otp.findOne({
+      email: email,
+    });
+    // console.log(findOtp);
+    if (!findOtp) {
+      return next(new ErrorHandler(400, "Otp is expired."));
+    }
+
+    // console.log(findOtp);
+    if (findOtp.otp != otp) {
+      return next(new ErrorHandler(400, "Incorrect Otp"));
+    }
+
+    await findOtp.save();
+
+    const findUser = await User.findOne({
+      email: email.toLowerCase(),
+    });
+    var user;
+    user = findUser;
+    // console.log(user);
+
+    const token = jwt.sign(
+      {
+        _id: user._id,
+      },
+      process.env.JWT_ACCESS_KEY,
+      {
+        expiresIn: "1d",
+      }
+    );
+    if (user) {
+      return res
+        .status(200)
+        .json({ success: true, msg: "OTP Verified.", token });
+    }
+  } catch (error) {
+    next(error);
+    console.log(error);
+  }
+};
+
 module.exports = {
   registerUser,
   loginUser,
   getMe,
+  forgotPassword,
+  OtpVerify
 }
