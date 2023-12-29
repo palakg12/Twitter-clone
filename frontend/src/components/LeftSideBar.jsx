@@ -15,6 +15,7 @@ const LeftSidebar = () => {
 
   const handleLogout = () => {
     dispatch(logout());
+    
   };
 
   return (
@@ -44,7 +45,7 @@ const LeftSidebar = () => {
           <p className="px-8 text-l text-base/10">{currentUser.name}</p>
         </div>
         <div>
-          <Link to="signin">
+          <Link to="/signin">
             <button
               className="bg-purple-600 px-3 py-2 text-white rounded-full"
               onClick={handleLogout}
