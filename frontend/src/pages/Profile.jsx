@@ -68,12 +68,11 @@ const Profile = () => {
     <>
       <div className="bg-custom-color text-white grid grid-cols-1 md:grid-cols-4">
         <div className="px-6 py-4">
-          <LeftSidebar />
+          <LeftSidebar/>
         </div>
         <div className="col-span-2 border-x-2 border-t-slate-800 px-6">
           <div className="flex justify-between items-center">
-            <img
-              src={userProfile?.profilePicture}
+            <img src={userProfile?.profilePicture}
               alt="Profile Picture"
               className="w-12 h-12 rounded-full"
             />
@@ -122,3 +121,8 @@ const Profile = () => {
 };
 
 export default Profile;
+
+
+
+
+

@@ -53,18 +53,20 @@ const Explore = () => {
       ) : (
         <div className="bg-custom-color text-white grid grid-cols-1 md:grid-cols-4">
           <div className="px-6">
-            <LeftSidebar />
+            <LeftSidebar/>
           </div>
           <div className="col-span-2 border-x-2 border-t-slate-800 px-6">
-            <ExploreTweets />
+            <ExploreTweets/>
           </div>
           <div className="px-6">
-            <RightSidebar />
+            <RightSidebar/>
           </div>
         </div>
-      )}
+      )
+    }
+  )
     </>
   );
-};
+  };
 
 export default Explore;
