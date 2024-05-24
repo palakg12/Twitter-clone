@@ -1,6 +1,6 @@
 const asyncHandler = require('express-async-handler')
 const Tweet = require('../models/TweetModel.js')
-const User = require('../models/Usermodel.js')
+const User = require('../models/UserModel.js')
 
 const getUser = asyncHandler(async (req, res) => {
       const user = await User.findById(req.params.id)
