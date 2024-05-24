@@ -23,9 +23,9 @@ app.use(express.urlencoded({ extended: false }));
 // }));
 
 // API routes
-app.use('/api/auth', require('./routes/authRoutes.js'));
-app.use('/api/users', require('./routes/usersRoutes.js'));
-app.use('/api/tweets', require('./routes/tweetRoutes.js'));
+app.use('/api/auth', require('./routes/authRoutes'));
+app.use('/api/users', require('./routes/usersRoutes'));
+app.use('/api/tweets', require('./routes/tweetRoutes'));
 
 // Serve frontend
 if (process.env.NODE_ENV === 'production') {
