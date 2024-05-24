@@ -1,5 +1,5 @@
 const asyncHandler = require('express-async-handler')
-const User = require('../models/UserModel.js')
+const User = require('../models/Usermodel.js')
 const Tweet = require('../models/TweetModel.js')
 
 const createTweet = asyncHandler(async (req, res) => {
