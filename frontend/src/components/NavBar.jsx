@@ -1,63 +1,3 @@
-// import { FaSignInAlt, FaSignOutAlt, FaUser } from 'react-icons/fa'
-// import { Link } from 'react-router-dom'
-// import { useSelector, useDispatch } from 'react-redux'
-// import { logout } from '../redux/userSlice'
-
-
-// function Navbar() {
-//   // const [userData, setUserData] = useState(null);
-//   // const location = useLocation().pathname;
-//   const dispatch = useDispatch();
-
-//     const handleLogout= () => {
-//         dispatch(logout())
-//     }
-//     const {currentUser} = useSelector((state) => state.user);
-
-//   return (
-//     <div className="flex justify-between items-center mb-0 ">
-//       <div className="mx-auto md:mx-0">
-//         <img
-//           src="/twitter-logo.png"
-//           alt="Twitter Logo"
-//           width={"40px"}
-//           className="ml-8 mt-4 "
-//         />
-//       </div>
-      
-//       <div className="col-span-4  md:border-slate-200 md:px-6 my-6 md:my-0">
-//         <div className="flex items-center justify-between mt-6">
-//       {
-//     currentUser ? (
-//           <li className="ml-5 mr-5 flex items-center">
-//             <button className='btn' onClick={handleLogout} >
-//               <FaSignOutAlt /> Logout
-//             </button>
-//           </li>
-//         ) : (
-//           <>
-//             <li className="ml-5 mr-5 flex items-center">
-//               <Link to='/login'>
-//                 <FaSignInAlt /> Login
-//               </Link>
-//             </li>
-//             <li className="ml-5 mr-5 flex items-center">
-//               <Link to='/register'>
-//                 <FaUser /> Register
-//               </Link>
-//             </li>
-//           </>
-//         )}
-//       </div>
-//       </div>
-//     </div>
-//   )
-// }
-
-// export default Navbar
-
-
-
 import React, { useState } from "react";
 import StarBorderPurple500Icon from "@mui/icons-material/StarBorderPurple500";
 import SearchIcon from "@mui/icons-material/Search";
@@ -65,7 +5,7 @@ import SearchIcon from "@mui/icons-material/Search";
 import { useLocation } from "react-router-dom";
 import UserPlaceholder from './UserPlaceholder'
 
-const Navbar = () => {
+const NavBar = () => {
   const [userData, setUserData] = useState(null);
   const location = useLocation().pathname;
 
@@ -103,4 +43,4 @@ const Navbar = () => {
   );
 };
 
-export default Navbar;
+export default NavBar;

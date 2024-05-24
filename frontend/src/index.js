@@ -7,7 +7,12 @@ import { Provider } from 'react-redux';//connect react wd redux
 import * as serviceWorker from './serviceWorker';
 import { PersistGate } from "redux-persist/integration/react";
 import { persistor } from "./redux/store";
+import {disableReactDevTools} from '@fvilers/disable-react-devtools';
 
+
+
+if(process.env.NODE_ENV === 'profuction') disableReactDevTools()
+  
 ReactDOM.render(
   <React.StrictMode>
     <Provider store={store}>

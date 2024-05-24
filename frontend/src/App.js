@@ -5,7 +5,7 @@ import Home from "./pages/Home";
 import Profile from "./pages/Profile";
 import Explore from "./pages/Explore";
 import Signin from "./pages/Signin";
-import Navbar from "./components/Navbar";
+import Navbar from "./components/NavBar";
 import Error from "./pages/Error";
 export const BackendUrl ="http://localhost:5000/api";
 

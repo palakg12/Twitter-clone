@@ -7,6 +7,7 @@ module.exports = {
         backgroundColor: {
           'custom-black': '#343434',
           'custom-white': '#36454F',
+          
           'custom-pink': '#800080',
           'custom-grey': '#3B3546',
           'red': '#e74c3c',
@@ -14,5 +15,13 @@ module.exports = {
         },
       },
     },
+    screens: {
+      'md2': '810px',
+      'sm2': '400px',
+      'laptop': '1200px',
+      'mobile1': { 'max': '1200px' },
+      'mobile2': { 'max': '600px' },
+
+  },
     plugins: [],
   };
