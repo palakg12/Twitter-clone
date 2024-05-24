@@ -13,15 +13,16 @@ connectDB();
 const app = express();
 
 app.use(express.json());
-
 app.use(express.urlencoded({ extended: false }));
 
+// CORS setup (uncomment and adjust as needed)
 // app.use(cors({
 //    origin: ["https://deploy-mern-1whq.vercel.app"],
-//    methods:["POST" , "GET"],
-//    credentials:true
-// }
-//  ));
+//    methods: ["POST", "GET"],
+//    credentials: true
+// }));
+
+// API routes
 app.use('/api/auth', require('./routes/authRoutes'));
 app.use('/api/users', require('./routes/usersRoutes'));
 app.use('/api/tweets', require('./routes/tweetRoutes'));
@@ -39,6 +40,8 @@ if (process.env.NODE_ENV === 'production') {
   app.get('/', (req, res) => res.send('Please set to production'));
 }
 
+// Error handler
 app.use(errorHandler);
 
+// Start server
 app.listen(port, () => console.log(`Server started on port ${port}`));
